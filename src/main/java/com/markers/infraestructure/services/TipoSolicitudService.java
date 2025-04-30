@@ -10,9 +10,9 @@ public interface TipoSolicitudService {
 
 	TipoSolicitud recuperarRegistroById(int id);
 
-	void agregarRegistro(TipoSolicitud datos);
+	boolean agregarRegistro(TipoSolicitud datos);
 
 	void actualizarRegistro(TipoSolicitud datos);
 
-	void eliminaRegistro(int id);
+	boolean eliminaRegistro(int id);
 }

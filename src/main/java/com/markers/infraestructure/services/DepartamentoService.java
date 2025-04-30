@@ -11,9 +11,9 @@ public interface DepartamentoService {
 
 	Departamento recuperarRegistroById(int id);
 
-	void agregarRegistro(Departamento datos);
+	boolean agregarRegistro(Departamento datos);
 
 	void actualizarRegistro(Departamento datos);
 
-	void eliminaRegistro(int id);
+	boolean eliminaRegistro(int id);
 }

@@ -4,42 +4,54 @@ package com.markers.infraestructure.services.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 
-import com.markers.domain.dao.TipoSolicitudDao;
+import org.springframework.stereotype.Service;
+
 import com.markers.domain.models.TipoSolicitud;
-import com.markers.domain.repository.TipoSolicitudJpaRepository;
-@Repository
-public class TipoSolicitudServicesImpl   implements TipoSolicitudDao{
+
+import com.markers.infraestructure.services.TipoSolicitudService;
+@Service
+public class TipoSolicitudServicesImpl   implements TipoSolicitudService{
 	 @Autowired
-	 TipoSolicitudJpaRepository repositorio;
+	 TipoSolicitudService dao;
 	 
-	@Override
-	public List<TipoSolicitud> devolverRegistro() {
+	 @Override
+		public List<TipoSolicitud> devolverRegistro() {
 
-		return repositorio.findAll();
-	}
+			return dao.devolverRegistro();
+		}
 
-	@Override
-	public TipoSolicitud recuperarRegistroById(int id) {
-		 return repositorio.findById(id);
-	}
+		@Override
+		public TipoSolicitud recuperarRegistroById(int id) {
+			 return dao.recuperarRegistroById(id);
+		}
 
-	@Override
-	public void agregarRegistro(TipoSolicitud datos) {
-		repositorio.save(datos);
-		
-	}
+		@Override
+		public boolean agregarRegistro(TipoSolicitud datos) {
+			 if(dao.recuperarRegistroById(datos.getIdTipoSolicitud())==null) {
+		            dao.agregarRegistro(datos);
+		            return true;
+		        }
+		        return false;
+			
+		}
 
-	@Override
-	public void actualizarRegistro(TipoSolicitud datos) {
-		repositorio.save(datos);
-		
-	}
+		@Override
+		public void actualizarRegistro(TipoSolicitud datos) {
+			 if(dao.recuperarRegistroById(datos.getIdTipoSolicitud())==null) {
+		            dao.actualizarRegistro(datos);
+		       
+		        }
+			
+		}
 
-	@Override
-	public void eliminaRegistro(int id) {
-		repositorio.deleteById(id);
-		
-	}
+		@Override
+		public boolean eliminaRegistro(int id) {
+			 if(dao.recuperarRegistroById(id)!=null) {
+		            dao.eliminaRegistro(id);
+		            return true;
+		        }
+		        return false;
+			
+		}
 }

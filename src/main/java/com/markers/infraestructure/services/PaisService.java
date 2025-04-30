@@ -11,9 +11,9 @@ public interface PaisService {
 
 	Pais recuperarRegistroById(int id);
 
-	void agregarRegistro(Pais datos);
+	boolean agregarRegistro(Pais datos);
 
 	void actualizarRegistro(Pais datos);
 
-	void eliminaRegistro(int id);
+	boolean eliminaRegistro(int id);
 }

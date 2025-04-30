@@ -3,46 +3,57 @@ package com.markers.infraestructure.services.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 
-import com.markers.domain.dao.DepartamentoDao;
+import org.springframework.stereotype.Service;
 
 import com.markers.domain.models.Departamento;
-import com.markers.domain.repository.DepartamentoJpaRepository;
-@Repository
-public class DepartamentoServicesImpl implements DepartamentoDao{
+import com.markers.infraestructure.services.DepartamentoService;
+
+@Service
+public class DepartamentoServicesImpl implements DepartamentoService{
 
 	
 	 @Autowired
-	 DepartamentoJpaRepository repositorio;
+	 DepartamentoService dao;
 	 
 	 
 	 @Override
 		public List<Departamento> devolverRegistro() {
 
-			return repositorio.findAll();
+			return dao.devolverRegistro();
 		}
 
 		@Override
 		public Departamento recuperarRegistroById(int id) {
-			 return repositorio.findById(id);
+			 return dao.recuperarRegistroById(id);
 		}
 
 		@Override
-		public void agregarRegistro(Departamento datos) {
-			repositorio.save(datos);
+		public boolean agregarRegistro(Departamento datos) {
+			 if(dao.recuperarRegistroById(datos.getIdDepartamento())==null) {
+		            dao.agregarRegistro(datos);
+		            return true;
+		        }
+		        return false;
 			
 		}
 
 		@Override
 		public void actualizarRegistro(Departamento datos) {
-			repositorio.save(datos);
+			 if(dao.recuperarRegistroById(datos.getIdDepartamento())==null) {
+		            dao.actualizarRegistro(datos);
+		       
+		        }
 			
 		}
 
 		@Override
-		public void eliminaRegistro(int id) {
-			repositorio.deleteById(id);
+		public boolean eliminaRegistro(int id) {
+			 if(dao.recuperarRegistroById(id)!=null) {
+		            dao.eliminaRegistro(id);
+		            return true;
+		        }
+		        return false;
 			
 		}
 

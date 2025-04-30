@@ -10,9 +10,9 @@ public interface UsuariosService {
 
 	Usuarios recuperarRegistroById(int id);
 
-	void agregarRegistro(Usuarios datos);
+	boolean agregarRegistro(Usuarios datos);
 
 	void actualizarRegistro(Usuarios datos);
 
-	void eliminaRegistro(int id);
+	boolean eliminaRegistro(int id);
 }

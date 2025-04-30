@@ -3,44 +3,57 @@ package com.markers.infraestructure.services.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 
-import com.markers.domain.dao.PaisDao;
+import org.springframework.stereotype.Service;
+
 import com.markers.domain.models.Pais;
+import com.markers.infraestructure.services.PaisService;
 
-import com.markers.domain.repository.PaisJpaRepository;
-@Repository
-public class PaisServicesImp  implements PaisDao{
+
+@Service
+public class PaisServicesImp  implements PaisService{
 
 	 @Autowired
-	 PaisJpaRepository repositorio;
+	 PaisService dao;
 	 
-	@Override
-	public List<Pais> devolverRegistro() {
+	 @Override
+		public List<Pais> devolverRegistro() {
 
-		return repositorio.findAll();
-	}
+			return dao.devolverRegistro();
+		}
 
-	@Override
-	public Pais recuperarRegistroById(int id) {
-		 return repositorio.findById(id);
-	}
+		@Override
+		public Pais recuperarRegistroById(int id) {
+			 return dao.recuperarRegistroById(id);
+		}
 
-	@Override
-	public void agregarRegistro(Pais datos) {
-		repositorio.save(datos);
-		
-	}
+		@Override
+		public boolean agregarRegistro(Pais datos) {
+			 if(dao.recuperarRegistroById(datos.getIdPais())==null) {
+		            dao.agregarRegistro(datos);
+		            return true;
+		        }
+		        return false;
+			
+		}
 
-	@Override
-	public void actualizarRegistro(Pais datos) {
-		repositorio.save(datos);
-		
-	}
+		@Override
+		public void actualizarRegistro(Pais datos) {
+			 if(dao.recuperarRegistroById(datos.getIdPais())==null) {
+		            dao.actualizarRegistro(datos);
+		       
+		        }
+			
+		}
 
-	@Override
-	public void eliminaRegistro(int id) {
-		repositorio.deleteById(id);
-		
-	}
+		@Override
+		public boolean eliminaRegistro(int id) {
+			 if(dao.recuperarRegistroById(id)!=null) {
+		            dao.eliminaRegistro(id);
+		            return true;
+		        }
+		        return false;
+			
+		}
+
 }

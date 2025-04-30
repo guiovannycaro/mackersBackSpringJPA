@@ -10,9 +10,9 @@ public interface PrestamoService {
 
 	Prestamo recuperarRegistroById(int id);
 
-	void agregarRegistro(Prestamo datos);
+	boolean agregarRegistro(Prestamo datos);
 
 	void actualizarRegistro(Prestamo datos);
 
-	void eliminaRegistro(int id);
+	boolean eliminaRegistro(int id);
 }

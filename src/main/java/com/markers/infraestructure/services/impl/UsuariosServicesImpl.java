@@ -3,43 +3,56 @@ package com.markers.infraestructure.services.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 
-import com.markers.domain.dao.UsuariosDao;
+import org.springframework.stereotype.Service;
+
 import com.markers.domain.models.Usuarios;
-import com.markers.domain.repository.UsuariosJpaRepository;
 
-@Repository
-public class UsuariosServicesImpl   implements UsuariosDao{
-	 @Autowired
-	 UsuariosJpaRepository repositorio;
+import com.markers.infraestructure.services.UsuariosService;
+
+@Service
+public class UsuariosServicesImpl   implements UsuariosService{
+	
+	@Autowired
+	 UsuariosService dao;
 	 
-	@Override
-	public List<Usuarios> devolverRegistro() {
+	 @Override
+		public List<Usuarios> devolverRegistro() {
 
-		return repositorio.findAll();
-	}
+			return dao.devolverRegistro();
+		}
 
-	@Override
-	public Usuarios recuperarRegistroById(int id) {
-		 return repositorio.findById(id);
-	}
+		@Override
+		public Usuarios recuperarRegistroById(int id) {
+			 return dao.recuperarRegistroById(id);
+		}
 
-	@Override
-	public void agregarRegistro(Usuarios datos) {
-		repositorio.save(datos);
-		
-	}
+		@Override
+		public boolean agregarRegistro(Usuarios datos) {
+			 if(dao.recuperarRegistroById(datos.getUsuId())==null) {
+		            dao.agregarRegistro(datos);
+		            return true;
+		        }
+		        return false;
+			
+		}
 
-	@Override
-	public void actualizarRegistro(Usuarios datos) {
-		repositorio.save(datos);
-		
-	}
+		@Override
+		public void actualizarRegistro(Usuarios datos) {
+			 if(dao.recuperarRegistroById(datos.getUsuId())==null) {
+		            dao.actualizarRegistro(datos);
+		       
+		        }
+			
+		}
 
-	@Override
-	public void eliminaRegistro(int id) {
-		repositorio.deleteById(id);
-		
-	}
+		@Override
+		public boolean eliminaRegistro(int id) {
+			 if(dao.recuperarRegistroById(id)!=null) {
+		            dao.eliminaRegistro(id);
+		            return true;
+		        }
+		        return false;
+			
+		}
 }

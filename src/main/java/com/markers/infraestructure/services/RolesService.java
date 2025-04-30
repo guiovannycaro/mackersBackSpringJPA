@@ -10,9 +10,9 @@ public interface RolesService {
 
 	Roles recuperarRegistroById(int id);
 
-	void agregarRegistro(Roles datos);
+	boolean agregarRegistro(Roles datos);
 
 	void actualizarRegistro(Roles datos);
 
-	void eliminaRegistro(int id);
+	boolean eliminaRegistro(int id);
 }
