@@ -26,17 +26,17 @@ public class Prestamo {
 	@ApiModelProperty(value = "idPrestamo", required = true, dataType = "Integer", example = "00000000", position = 1)
 	 @Id
 	 @GeneratedValue(strategy = GenerationType.IDENTITY)
-     @Column(name = "idPrestamo")
+     @Column(name = "idprestamo")
 	Integer idPrestamo;
 	
-	@ApiModelProperty(value = "idSolicitud", required = true, dataType = "Integer", example = "00000000", position = 2)
+	@ApiModelProperty(value = "idsolicitud", required = true, dataType = "Integer", example = "00000000", position = 2)
 	@ManyToOne
-    @JoinColumn(name = "idSolicitud")
-	Solicitudes idSolicitud;
+    @JoinColumn(name = "idsolicitud")
+	Solicitudes idsolicitud;
 	
 	@ApiModelProperty(value = "usuarioId", required = true, dataType = "Integer", example = "00000000", position = 3)
 	@ManyToOne
-    @JoinColumn(name = "usuarioId")
+    @JoinColumn(name = "usuarioid")
 	Usuarios usuarioId;
 	
 	@ApiModelProperty(value = "monto", required = true, dataType = "Double", example = "00000000", position = 4)
@@ -44,17 +44,17 @@ public class Prestamo {
 	Double monto;
 	
 	@ApiModelProperty(value = "plazoEnMeses", required = true, dataType = "Integer", example = "00000000", position = 5)
-	  @Column(name = "plazoEnMeses")
+	  @Column(name = "plazoenmeses")
 	Integer plazoEnMeses;
 	
 	@ApiModelProperty(value = "EstadoPrestamo", required = true, dataType = "Boolean", example = "00000000", position = 6)
-	  @Column(name = "EstadoPrestamo")
+	  @Column(name = "estadoprestamo")
 	Boolean EstadoPrestamo;
     
-	public Prestamo(Integer idPrestamo,Solicitudes idSolicitud, Usuarios usuarioId, Double monto, Integer plazoEnMeses, Boolean estadoPrestamo) {
+	public Prestamo(Integer idPrestamo,Solicitudes idsolicitud, Usuarios usuarioId, Double monto, Integer plazoEnMeses, Boolean estadoPrestamo) {
 	
 		this.idPrestamo = idPrestamo;
-		this.idSolicitud = idSolicitud;
+		this.idsolicitud = idsolicitud;
 		this.usuarioId = usuarioId;
 		this.monto = monto;
 		this.plazoEnMeses = plazoEnMeses;
@@ -70,6 +70,14 @@ public class Prestamo {
 
 	public void setIdPrestamo(Integer idPrestamo) {
 		this.idPrestamo = idPrestamo;
+	}
+
+	public Solicitudes getIdsolicitud() {
+		return idsolicitud;
+	}
+
+	public void setIdsolicitud(Solicitudes idsolicitud) {
+		this.idsolicitud = idsolicitud;
 	}
 
 	public Usuarios getUsuarioId() {
@@ -106,9 +114,10 @@ public class Prestamo {
 
 	@Override
 	public String toString() {
-		return "Prestamo [idPrestamo=" + idPrestamo + ", usuarioId=" + usuarioId + ", monto=" + monto
-				+ ", plazoEnMeses=" + plazoEnMeses + ", EstadoPrestamo=" + EstadoPrestamo + "]";
+		return "Prestamo [idPrestamo=" + idPrestamo + ", idsolicitud=" + idsolicitud + ", usuarioId=" + usuarioId
+				+ ", monto=" + monto + ", plazoEnMeses=" + plazoEnMeses + ", EstadoPrestamo=" + EstadoPrestamo + "]";
 	}
-	 
+
+	
     
 }

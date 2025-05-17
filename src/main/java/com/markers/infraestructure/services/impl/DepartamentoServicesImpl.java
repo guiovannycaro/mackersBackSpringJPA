@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
 
+import com.markers.domain.dao.DepartamentoDao;
+
 import com.markers.domain.models.Departamento;
 import com.markers.infraestructure.services.DepartamentoService;
 
@@ -14,7 +16,7 @@ public class DepartamentoServicesImpl implements DepartamentoService{
 
 	
 	 @Autowired
-	 DepartamentoService dao;
+	 DepartamentoDao dao;
 	 
 	 
 	 @Override
@@ -48,13 +50,19 @@ public class DepartamentoServicesImpl implements DepartamentoService{
 		}
 
 		@Override
-		public boolean eliminaRegistro(int id) {
+		public boolean eliminarRegistro(int id) {
 			 if(dao.recuperarRegistroById(id)!=null) {
 		            dao.eliminaRegistro(id);
 		            return true;
 		        }
 		        return false;
 			
+		}
+		
+		@Override
+		public List<Departamento> findRegistroById(int id) {
+
+			return dao.devolverRegistroById(id);
 		}
 
 }

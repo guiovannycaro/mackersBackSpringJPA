@@ -16,4 +16,7 @@ public interface CiudadDao {
 	void actualizarRegistro(Ciudad datos);
 
 	void eliminaRegistro(int id);
+	
+	List<Ciudad> devolverRegistroById(int id);
+
 }

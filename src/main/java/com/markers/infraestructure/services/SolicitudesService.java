@@ -2,6 +2,7 @@ package com.markers.infraestructure.services;
 
 import java.util.List;
 
+
 import com.markers.domain.models.Solicitudes;
 
 public interface SolicitudesService {
@@ -14,5 +15,7 @@ public interface SolicitudesService {
 
 	void actualizarRegistro(Solicitudes datos);
 
-	boolean eliminaRegistro(int id);
+	boolean eliminarRegistro(int id);
+	
+	List<Solicitudes> findRegistroById(int id);
 }

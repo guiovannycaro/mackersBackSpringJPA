@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.markers.domain.dao.PaisDao;
+
 import com.markers.domain.models.Pais;
 
 import com.markers.domain.repository.PaisJpaRepository;
@@ -42,5 +43,11 @@ public class PaisDaoImp  implements PaisDao{
 	public void eliminaRegistro(int id) {
 		repositorio.deleteById(id);
 		
+	}
+	
+	@Override
+	public List<Pais> devolverRegistroById(int id) {
+
+		return repositorio.searchById(id);
 	}
 }

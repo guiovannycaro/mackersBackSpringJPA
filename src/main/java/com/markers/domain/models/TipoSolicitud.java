@@ -16,14 +16,14 @@ import lombok.Data;
 @SuppressWarnings("all") // Nombres a utilizar en los objetos JSON a enviar al cliente
 @ApiModel(value = "TipoSolicitud", description = "Esta clase representa la informacion del TipoSolicitud")
 @Entity
-@Table(name = "TipoSolicitud")
+@Table(name = "tiposolicitud")
 @Data
 public class TipoSolicitud {
 
-	@ApiModelProperty(value = "idPrestamo", required = true, dataType = "Integer", example = "00000000", position = 1)
+	@ApiModelProperty(value = "idTipoSolicitud", required = true, dataType = "Integer", example = "00000000", position = 1)
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idTipoSolicitud")
+    @Column(name = "idtiposolicitud")
 	Integer idTipoSolicitud;
 	
 	@ApiModelProperty(value = "descripcion", required = true, dataType = "String", example = "00000000", position = 2)
@@ -31,7 +31,7 @@ public class TipoSolicitud {
 	String descripcion;
 	
 	@ApiModelProperty(value = "Estado", required = true, dataType = "Boolean", example = "00000000", position = 5)
-	@Column(name = "Estado")
+	@Column(name = "estado")
 	Boolean Estado;
 	
 	public TipoSolicitud(Integer idTipoSolicitud, String descripcion, Boolean estado) {

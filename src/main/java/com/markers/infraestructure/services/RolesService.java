@@ -2,6 +2,7 @@ package com.markers.infraestructure.services;
 
 import java.util.List;
 
+
 import com.markers.domain.models.Roles;
 
 public interface RolesService {
@@ -14,5 +15,7 @@ public interface RolesService {
 
 	void actualizarRegistro(Roles datos);
 
-	boolean eliminaRegistro(int id);
+	boolean eliminarRegistro(int id);
+	
+	List<Roles> findRegistroById(int id);
 }

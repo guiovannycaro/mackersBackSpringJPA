@@ -25,7 +25,7 @@ public class CiudadDaoImpl  implements CiudadDao{
 
 	@Override
 	public Ciudad recuperarRegistroById(int id) {
-		 return repositorio.findById(id);
+		 return repositorio.searchById(id);
 	}
 
 	@Override
@@ -45,5 +45,12 @@ public class CiudadDaoImpl  implements CiudadDao{
 		repositorio.deleteById(id);
 		
 	}
+	
+	
 
+	@Override
+	public List<Ciudad> devolverRegistroById(int id) {
+
+		return repositorio.buscarById(id);
+	}
 }

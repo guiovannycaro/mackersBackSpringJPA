@@ -20,36 +20,36 @@ import lombok.Data;
 @ApiModel(value = "Solicitudes", description = "Esta clase representa la informacion del Solicitudes")
 
 @Entity
-@Table(name = "Solicitudes")
+@Table(name = "solicitudes")
 @Data
 public class Solicitudes {
 
 
-	@ApiModelProperty(value = "idPrestamo", required = true, dataType = "Integer", example = "00000000", position = 1)
+	@ApiModelProperty(value = "idSolicitud", required = true, dataType = "Integer", example = "00000000", position = 1)
 	 @Id
 	 @GeneratedValue(strategy = GenerationType.IDENTITY)
-     @Column(name = "idSolicitud")
+     @Column(name = "idsolicitud")
 	Integer idSolicitud;
 	
 	@ApiModelProperty(value = "fechaSolicitud", required = true, dataType = "Date", example = "00000000", position = 2)
-	   @Column(name = "fechaSolicitud")
+	   @Column(name = "fechasolicitud")
 	Date fechaSolicitud;
 	
 	@ApiModelProperty(value = "idCiudad", required = true, dataType = "Integer", example = "00000000", position = 3)
 	@ManyToOne
-    @JoinColumn(name = "idCiudad")
+    @JoinColumn(name = "idciudad")
 	Ciudad idCiudad;
 	
 	@ApiModelProperty(value = "idTipoSolicitud", required = true, dataType = "Integer", example = "00000000", position = 4)
 	@ManyToOne
-    @JoinColumn(name = "idTipoSolicitud")
-	Integer idTipoSolicitud;
+    @JoinColumn(name = "idtiposolicitud")
+	TipoSolicitud idTipoSolicitud;
 	
 	@ApiModelProperty(value = "Estado", required = true, dataType = "Boolean", example = "00000000", position = 5)
-	@Column(name = "Estado")
+	@Column(name = "estado")
     Boolean Estado;
 	
-	public Solicitudes(Integer idSolicitud, Date fechaSolicitud, Ciudad idCiudad, Integer idTipoSolicitud,
+	public Solicitudes(Integer idSolicitud, Date fechaSolicitud, Ciudad idCiudad, TipoSolicitud idTipoSolicitud,
 			Boolean estado) {
 	
 		this.idSolicitud = idSolicitud;
@@ -88,11 +88,13 @@ public class Solicitudes {
 		this.idCiudad = idCiudad;
 	}
 
-	public Integer getIdTipoSolicitud() {
+	
+
+	public TipoSolicitud getIdTipoSolicitud() {
 		return idTipoSolicitud;
 	}
 
-	public void setIdTipoSolicitud(Integer idTipoSolicitud) {
+	public void setIdTipoSolicitud(TipoSolicitud idTipoSolicitud) {
 		this.idTipoSolicitud = idTipoSolicitud;
 	}
 

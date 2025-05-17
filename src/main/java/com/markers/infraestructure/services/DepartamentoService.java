@@ -2,6 +2,7 @@ package com.markers.infraestructure.services;
 
 import java.util.List;
 
+
 import com.markers.domain.models.Departamento;
 
 public interface DepartamentoService {
@@ -15,5 +16,7 @@ public interface DepartamentoService {
 
 	void actualizarRegistro(Departamento datos);
 
-	boolean eliminaRegistro(int id);
+	boolean eliminarRegistro(int id);
+	
+	List<Departamento> findRegistroById(int id);
 }

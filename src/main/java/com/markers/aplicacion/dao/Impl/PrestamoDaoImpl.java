@@ -19,7 +19,7 @@ public class PrestamoDaoImpl  implements PrestamoDao{
 	@Override
 	public List<Prestamo> devolverRegistro() {
 
-		return repositorio.findAll();
+		return repositorio.listaPrestamos();
 	}
 
 	@Override
@@ -44,4 +44,11 @@ public class PrestamoDaoImpl  implements PrestamoDao{
 		repositorio.deleteById(id);
 		
 	}
+	
+	@Override
+	public List<Prestamo> devolverRegistroById(int id) {
+
+		return repositorio.searchById(id);
+	}
+	
 }

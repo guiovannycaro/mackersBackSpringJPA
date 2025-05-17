@@ -23,7 +23,7 @@ public class Roles {
 	@ApiModelProperty(value = "idPrestamo", required = true, dataType = "Integer", example = "00000000", position = 1)
 	 @Id
 	 @GeneratedValue(strategy = GenerationType.IDENTITY)
-     @Column(name = "idRol")
+     @Column(name = "idrol")
 	Integer idRol;
 	
 	@ApiModelProperty(value = "descripcion", required = true, dataType = "String", example = "00000000", position = 2)
@@ -31,7 +31,7 @@ public class Roles {
 	String descripcion;
 	
 	@ApiModelProperty(value = "Estado", required = true, dataType = "Boolean", example = "00000000", position = 5)
-	   @Column(name = "Estado")
+	   @Column(name = "usuestado")
 	Boolean Estado;
 	
 	public Roles(Integer idRol, String descripcion, Boolean estado) {
@@ -40,6 +40,10 @@ public class Roles {
 		Estado = estado;
 	}
 
+	
+	public Roles() {
+		
+	}
 	public Integer getIdRol() {
 		return idRol;
 	}

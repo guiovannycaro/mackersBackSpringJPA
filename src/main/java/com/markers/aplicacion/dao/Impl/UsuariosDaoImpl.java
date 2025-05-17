@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.markers.domain.dao.UsuariosDao;
+
 import com.markers.domain.models.Usuarios;
 import com.markers.domain.repository.UsuariosJpaRepository;
 
@@ -42,4 +43,12 @@ public class UsuariosDaoImpl   implements UsuariosDao{
 		repositorio.deleteById(id);
 		
 	}
+	
+	@Override
+	public List<Usuarios> devolverRegistroById(int id) {
+
+		return repositorio.searchById(id);
+	}
+	
+	
 }

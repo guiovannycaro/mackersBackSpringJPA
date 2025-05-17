@@ -26,50 +26,62 @@ public class Usuarios implements Serializable {
 	@ApiModelProperty(value = "usuId", required = true, dataType = "Integer", example = "00000000", position = 1)
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "usuId")
+    @Column(name = "usuid")
 	Integer usuId;
 	
 	@ApiModelProperty(value = "usuNombre", required = true, dataType = "String", example = "00000000", position = 2)
-	  @Column(name = "usuNombre")
+	  @Column(name = "usunombre")
 	String usuNombre;
 	
-	@ApiModelProperty(value = "usuUsuario", required = true, dataType = "String", example = "00000000", position = 3)
-	  @Column(name = "usuUsuario")
-	String usuUsuario;
+	@ApiModelProperty(value = "tipoDocumento", required = true, dataType = "String", example = "00000000", position = 3)
+	@ManyToOne
+    @JoinColumn(name = "tipodocumento")
+	TipoDocumento tipoDocumento;
 	
-	@ApiModelProperty(value = "usuEstado", required = true, dataType = "String", example = "00000000", position = 4)
-	  @Column(name = "usuEstado")
-	String usuEstado;
+	@ApiModelProperty(value = "numDocumento", required = true, dataType = "String", example = "00000000", position = 4)
+	  @Column(name = "numdocumento")
+	Integer numDocumento;
 	
-	@ApiModelProperty(value = "usuContrasena", required = true, dataType = "String", example = "00000000", position = 5)
-	  @Column(name = "usuContrasena")
+	@ApiModelProperty(value = "usuEstado", required = true, dataType = "String", example = "00000000", position = 5)
+	  @Column(name = "usuestado")
+	Boolean usuEstado;
+	
+	@ApiModelProperty(value = "usuContrasena", required = true, dataType = "String", example = "00000000", position = 6)
+	  @Column(name = "usucontrasena")
 	String usuContrasena;
 	
-	@ApiModelProperty(value = "usuCorreo", required = true, dataType = "String", example = "00000000", position = 6)
-	  @Column(name = "usuCorreo")
+	@ApiModelProperty(value = "usuCorreo", required = true, dataType = "String", example = "00000000", position = 7)
+	  @Column(name = "usucorreo")
 	String usuCorreo;
 	
-	@ApiModelProperty(value = "usuRol", required = true, dataType = "String", example = "00000000", position = 7)
+	@ApiModelProperty(value = "usuRol", required = true, dataType = "String", example = "00000000", position = 8)
 	@ManyToOne
-    @JoinColumn(name = "usuRol")
+    @JoinColumn(name = "usurol")
 	Roles usuRol;
 	
-
-	public Usuarios(Integer usuId, String usuNombre, String usuUsuario, String usuEstado, String usuContrasena,
-			String usuCorreo, Roles usuRol) {
 	
+	@ApiModelProperty(value = "usuCiu", required = true, dataType = "String", example = "00000000", position = 9)
+	@ManyToOne
+    @JoinColumn(name = "usuciu")
+	Ciudad usuCiu;
+
+
+	public Usuarios(Integer usuId, String usuNombre, TipoDocumento tipoDocumento, Integer numDocumento,
+			Boolean usuEstado, String usuContrasena, String usuCorreo, Roles usuRol, Ciudad usuCiu) {
+		
 		this.usuId = usuId;
 		this.usuNombre = usuNombre;
-		this.usuUsuario = usuUsuario;
+		this.tipoDocumento = tipoDocumento;
+		this.numDocumento = numDocumento;
 		this.usuEstado = usuEstado;
 		this.usuContrasena = usuContrasena;
 		this.usuCorreo = usuCorreo;
 		this.usuRol = usuRol;
-		
+		this.usuCiu = usuCiu;
 	}
-	
+
 	public Usuarios() {
-	
+		
 	}
 
 	public Integer getUsuId() {
@@ -88,19 +100,27 @@ public class Usuarios implements Serializable {
 		this.usuNombre = usuNombre;
 	}
 
-	public String getUsuUsuario() {
-		return usuUsuario;
+	public TipoDocumento getTipoDocumento() {
+		return tipoDocumento;
 	}
 
-	public void setUsuUsuario(String usuUsuario) {
-		this.usuUsuario = usuUsuario;
+	public void setTipoDocumento(TipoDocumento tipoDocumento) {
+		this.tipoDocumento = tipoDocumento;
 	}
 
-	public String getUsuEstado() {
+	public Integer getNumDocumento() {
+		return numDocumento;
+	}
+
+	public void setNumDocumento(Integer numDocumento) {
+		this.numDocumento = numDocumento;
+	}
+
+	public Boolean getUsuEstado() {
 		return usuEstado;
 	}
 
-	public void setUsuEstado(String usuEstado) {
+	public void setUsuEstado(Boolean usuEstado) {
 		this.usuEstado = usuEstado;
 	}
 
@@ -128,17 +148,21 @@ public class Usuarios implements Serializable {
 		this.usuRol = usuRol;
 	}
 
-	
+	public Ciudad getCiudad() {
+		return usuCiu;
+	}
+
+	public void setCiudad(Ciudad usuCiu) {
+		this.usuCiu = usuCiu;
+	}
 
 	@Override
 	public String toString() {
-		return "Usuarios [usuId=" + usuId + ", usuNombre=" + usuNombre + ", usuUsuario=" + usuUsuario + ", usuEstado="
-				+ usuEstado + ", usuContrasena=" + usuContrasena + ", usuCorreo=" + usuCorreo + ", usuRol=" + usuRol
-				+ "]";
+		return "Usuarios [usuId=" + usuId + ", usuNombre=" + usuNombre + ", tipoDocumento=" + tipoDocumento
+				+ ", numDocumento=" + numDocumento + ", usuEstado=" + usuEstado + ", usuContrasena=" + usuContrasena
+				+ ", usuCorreo=" + usuCorreo + ", usuRol=" + usuRol + ", usuCiu=" + usuCiu + "]";
 	}
 	
 	
 	
-	
-
 }

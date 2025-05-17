@@ -3,33 +3,45 @@ package com.markers.domain.models.dtos;
 
 
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
-@Setter
+
 public class CiudadDto {
 
 	
 
 	Integer idCiudad;
 	
-	String descripcion;
+	String nombre;
 	
+	String codoficial;
+
+	Double latitud;
+	Double longitud;
 	Integer idDepartamento;
+	String codpostal;
+   
+
 
 	
-    Boolean Estado;
-
-	public CiudadDto(Integer idCiudad, String descripcion, Integer idDepartamento, Boolean estado) {
-
+	
+	public CiudadDto(Integer idCiudad, String nombre, String codoficial, Double latitud, Double longitud,
+			Integer idDepartamento, String codpostal) {
 		this.idCiudad = idCiudad;
-		this.descripcion = descripcion;
+		this.nombre = nombre;
+		this.codoficial = codoficial;
+		this.latitud = latitud;
+		this.longitud = longitud;
 		this.idDepartamento = idDepartamento;
-		Estado = estado;
+		this.codpostal = codpostal;
 	}
-	
-	
+
+
 	public CiudadDto() {
 
 	}
@@ -45,13 +57,43 @@ public class CiudadDto {
 	}
 
 
-	public String getDescripcion() {
-		return descripcion;
+	public String getNombre() {
+		return nombre;
 	}
 
 
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+
+	public String getCodoficial() {
+		return codoficial;
+	}
+
+
+	public void setCodoficial(String codoficial) {
+		this.codoficial = codoficial;
+	}
+
+
+	public Double getLatitud() {
+		return latitud;
+	}
+
+
+	public void setLatitud(Double latitud) {
+		this.latitud = latitud;
+	}
+
+
+	public Double getLongitud() {
+		return longitud;
+	}
+
+
+	public void setLongitud(Double longitud) {
+		this.longitud = longitud;
 	}
 
 
@@ -65,21 +107,23 @@ public class CiudadDto {
 	}
 
 
-	public Boolean getEstado() {
-		return Estado;
+	public String getCodpostal() {
+		return codpostal;
 	}
 
 
-	public void setEstado(Boolean estado) {
-		Estado = estado;
+	public void setCodpostal(String codpostal) {
+		this.codpostal = codpostal;
 	}
 
 
 	@Override
 	public String toString() {
-		return "Ciudad [idCiudad=" + idCiudad + ", descripcion=" + descripcion + ", idDepartamento=" + idDepartamento
-				+ ", Estado=" + Estado + "]";
+		return "CiudadDto [idCiudad=" + idCiudad + ", nombre=" + nombre + ", codoficial=" + codoficial + ", latitud="
+				+ latitud + ", longitud=" + longitud + ", idDepartamento=" + idDepartamento + ", codpostal=" + codpostal
+				+ "]";
 	}
+
 
 	
 }

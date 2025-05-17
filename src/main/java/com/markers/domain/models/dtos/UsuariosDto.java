@@ -17,33 +17,38 @@ public class UsuariosDto implements Serializable {
 	Integer usuId;
 
 	String usuNombre;
+	
+	Integer tipoDocumento;
 
-	String usuUsuario;
+	Integer numDocumento;
 
-	String usuEstado;
-
-	String usuContrasena;
+	Integer usuRol;
 
 	String usuCorreo;
 
-	String usuRol;
+	String usuPassword;
+
+	Integer usuCiudad;
+	
+	Boolean usuEstado;
+	
 	
 
-	public UsuariosDto(Integer usuId, String usuNombre, String usuUsuario, String usuEstado, String usuContrasena,
-			String usuCorreo, String usuRol) {
-	
+	public UsuariosDto(Integer usuId, String usuNombre, Integer tipoDocumento, Integer numDocumento, Integer usuRol,
+			String usuCorreo, String usuPassword, Integer usuCiudad, Boolean usuEstado) {
 		this.usuId = usuId;
 		this.usuNombre = usuNombre;
-		this.usuUsuario = usuUsuario;
-		this.usuEstado = usuEstado;
-		this.usuContrasena = usuContrasena;
-		this.usuCorreo = usuCorreo;
+		this.tipoDocumento = tipoDocumento;
+		this.numDocumento = numDocumento;
 		this.usuRol = usuRol;
-		
+		this.usuCorreo = usuCorreo;
+		this.usuPassword = usuPassword;
+		this.usuCiudad = usuCiudad;
+		this.usuEstado = usuEstado;
 	}
 	
 	public UsuariosDto() {
-	
+
 	}
 
 	public Integer getUsuId() {
@@ -62,28 +67,28 @@ public class UsuariosDto implements Serializable {
 		this.usuNombre = usuNombre;
 	}
 
-	public String getUsuUsuario() {
-		return usuUsuario;
+	public Integer getTipoDocumento() {
+		return tipoDocumento;
 	}
 
-	public void setUsuUsuario(String usuUsuario) {
-		this.usuUsuario = usuUsuario;
+	public void setTipoDocumento(Integer tipoDocumento) {
+		this.tipoDocumento = tipoDocumento;
 	}
 
-	public String getUsuEstado() {
-		return usuEstado;
+	public Integer getNumDocumento() {
+		return numDocumento;
 	}
 
-	public void setUsuEstado(String usuEstado) {
-		this.usuEstado = usuEstado;
+	public void setNumDocumento(Integer numDocumento) {
+		this.numDocumento = numDocumento;
 	}
 
-	public String getUsuContrasena() {
-		return usuContrasena;
+	public Integer getUsuRol() {
+		return usuRol;
 	}
 
-	public void setUsuContrasena(String usuContrasena) {
-		this.usuContrasena = usuContrasena;
+	public void setUsuRol(Integer usuRol) {
+		this.usuRol = usuRol;
 	}
 
 	public String getUsuCorreo() {
@@ -94,22 +99,37 @@ public class UsuariosDto implements Serializable {
 		this.usuCorreo = usuCorreo;
 	}
 
-	public String getUsuRol() {
-		return usuRol;
+	public String getUsuPassword() {
+		return usuPassword;
 	}
 
-	public void setUsuRol(String usuRol) {
-		this.usuRol = usuRol;
+	public void setUsuPassword(String usuPassword) {
+		this.usuPassword = usuPassword;
 	}
 
-	
+	public Integer getUsuCiudad() {
+		return usuCiudad;
+	}
+
+	public void setUsuCiudad(Integer usuCiudad) {
+		this.usuCiudad = usuCiudad;
+	}
+
+	public Boolean getUsuEstado() {
+		return usuEstado;
+	}
+
+	public void setUsuEstado(Boolean usuEstado) {
+		this.usuEstado = usuEstado;
+	}
 
 	@Override
 	public String toString() {
-		return "Usuarios [usuId=" + usuId + ", usuNombre=" + usuNombre + ", usuUsuario=" + usuUsuario + ", usuEstado="
-				+ usuEstado + ", usuContrasena=" + usuContrasena + ", usuCorreo=" + usuCorreo + ", usuRol=" + usuRol
-				+ "]";
+		return "UsuariosDto [usuId=" + usuId + ", usuNombre=" + usuNombre + ", tipoDocumento=" + tipoDocumento
+				+ ", numDocumento=" + numDocumento + ", usuRol=" + usuRol + ", usuCorreo=" + usuCorreo
+				+ ", usuPassword=" + usuPassword + ", usuCiudad=" + usuCiudad + ", usuEstado=" + usuEstado + "]";
 	}
+
 	
 	
 	

@@ -45,5 +45,13 @@ public class DepartamentoDaoImpl implements DepartamentoDao{
 			repositorio.deleteById(id);
 			
 		}
+		
+		
+
+		@Override
+		public List<Departamento> devolverRegistroById(int id) {
+
+			return repositorio.searchById(id);
+		}
 
 }

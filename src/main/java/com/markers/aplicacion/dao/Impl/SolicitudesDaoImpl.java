@@ -25,7 +25,7 @@ public class SolicitudesDaoImpl implements SolicitudesDao{
 
 	@Override
 	public Solicitudes recuperarRegistroById(int id) {
-		 return repositorio.findById(id);
+		 return repositorio.buscarById(id);
 	}
 
 	@Override
@@ -44,6 +44,12 @@ public class SolicitudesDaoImpl implements SolicitudesDao{
 	public void eliminaRegistro(int id) {
 		repositorio.deleteById(id);
 		
+	}
+	
+	@Override
+	public List<Solicitudes> devolverRegistroById(int id) {
+
+		return repositorio.searchById(id);
 	}
 
 }

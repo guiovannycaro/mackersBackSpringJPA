@@ -7,13 +7,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
 
+import com.markers.domain.dao.TipoSolicitudDao;
+
 import com.markers.domain.models.TipoSolicitud;
 
 import com.markers.infraestructure.services.TipoSolicitudService;
 @Service
 public class TipoSolicitudServicesImpl   implements TipoSolicitudService{
 	 @Autowired
-	 TipoSolicitudService dao;
+	 TipoSolicitudDao dao;
 	 
 	 @Override
 		public List<TipoSolicitud> devolverRegistro() {
@@ -46,12 +48,18 @@ public class TipoSolicitudServicesImpl   implements TipoSolicitudService{
 		}
 
 		@Override
-		public boolean eliminaRegistro(int id) {
+		public boolean eliminarRegistro(int id) {
 			 if(dao.recuperarRegistroById(id)!=null) {
 		            dao.eliminaRegistro(id);
 		            return true;
 		        }
 		        return false;
 			
+		}
+		
+		@Override
+		public List<TipoSolicitud> findRegistroById(int id) {
+
+			return dao.devolverRegistroById(id);
 		}
 }

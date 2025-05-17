@@ -44,4 +44,10 @@ public class RolesDaoImpl  implements RolesDao{
 		repositorio.deleteById(id);
 		
 	}
+	
+	@Override
+	public List<Roles> devolverRegistroById(int id) {
+
+		return repositorio.searchById(id);
+	}
 }

@@ -27,17 +27,19 @@ public class PrestamoDto {
 	
 	Integer plazoEnMeses;
 
-    Boolean EstadoPrestamo;
+    Boolean estado;
     
-	public PrestamoDto(Integer idPrestamo, Integer usuarioId, Double monto, Integer plazoEnMeses, Boolean estadoPrestamo) {
 	
+	public PrestamoDto(Integer idPrestamo, Integer idSolicitud, Integer usuarioId, Double monto, Integer plazoEnMeses,
+			Boolean estado) {
 		this.idPrestamo = idPrestamo;
+		this.idSolicitud = idSolicitud;
 		this.usuarioId = usuarioId;
 		this.monto = monto;
 		this.plazoEnMeses = plazoEnMeses;
-		EstadoPrestamo = estadoPrestamo;
+		this.estado = estado;
 	}
-    
+
 	public PrestamoDto() {
 	}
 
@@ -47,6 +49,14 @@ public class PrestamoDto {
 
 	public void setIdPrestamo(Integer idPrestamo) {
 		this.idPrestamo = idPrestamo;
+	}
+
+	public Integer getIdSolicitud() {
+		return idSolicitud;
+	}
+
+	public void setIdSolicitud(Integer idSolicitud) {
+		this.idSolicitud = idSolicitud;
 	}
 
 	public Integer getUsuarioId() {
@@ -73,19 +83,21 @@ public class PrestamoDto {
 		this.plazoEnMeses = plazoEnMeses;
 	}
 
-	public Boolean getEstadoPrestamo() {
-		return EstadoPrestamo;
+	public Boolean getEstado() {
+		return estado;
 	}
 
-	public void setEstadoPrestamo(Boolean estadoPrestamo) {
-		EstadoPrestamo = estadoPrestamo;
+	public void setEstado(Boolean estado) {
+		this.estado = estado;
 	}
 
 	@Override
 	public String toString() {
-		return "Prestamo [idPrestamo=" + idPrestamo + ", usuarioId=" + usuarioId + ", monto=" + monto
-				+ ", plazoEnMeses=" + plazoEnMeses + ", EstadoPrestamo=" + EstadoPrestamo + "]";
+		return "PrestamoDto [idPrestamo=" + idPrestamo + ", idSolicitud=" + idSolicitud + ", usuarioId=" + usuarioId
+				+ ", monto=" + monto + ", plazoEnMeses=" + plazoEnMeses + ", Estado=" + estado + "]";
 	}
+
+	
 	 
     
 }

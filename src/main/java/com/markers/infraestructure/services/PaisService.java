@@ -2,6 +2,7 @@ package com.markers.infraestructure.services;
 
 import java.util.List;
 
+
 import com.markers.domain.models.Pais;
 
 public interface PaisService {
@@ -15,5 +16,9 @@ public interface PaisService {
 
 	void actualizarRegistro(Pais datos);
 
-	boolean eliminaRegistro(int id);
+
+	
+	boolean eliminarRegistro(int id);
+	
+	List<Pais> findRegistroById(int id);
 }

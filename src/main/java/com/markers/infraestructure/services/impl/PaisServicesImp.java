@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
 
+import com.markers.domain.dao.PaisDao;
+import com.markers.domain.models.Departamento;
 import com.markers.domain.models.Pais;
 import com.markers.infraestructure.services.PaisService;
 
@@ -14,7 +16,7 @@ import com.markers.infraestructure.services.PaisService;
 public class PaisServicesImp  implements PaisService{
 
 	 @Autowired
-	 PaisService dao;
+	 PaisDao dao;
 	 
 	 @Override
 		public List<Pais> devolverRegistro() {
@@ -29,7 +31,7 @@ public class PaisServicesImp  implements PaisService{
 
 		@Override
 		public boolean agregarRegistro(Pais datos) {
-			 if(dao.recuperarRegistroById(datos.getIdPais())==null) {
+			 if(dao.recuperarRegistroById(datos.getIdpais())==null) {
 		            dao.agregarRegistro(datos);
 		            return true;
 		        }
@@ -39,7 +41,7 @@ public class PaisServicesImp  implements PaisService{
 
 		@Override
 		public void actualizarRegistro(Pais datos) {
-			 if(dao.recuperarRegistroById(datos.getIdPais())==null) {
+			 if(dao.recuperarRegistroById(datos.getIdpais())==null) {
 		            dao.actualizarRegistro(datos);
 		       
 		        }
@@ -47,13 +49,19 @@ public class PaisServicesImp  implements PaisService{
 		}
 
 		@Override
-		public boolean eliminaRegistro(int id) {
+		public boolean eliminarRegistro(int id) {
 			 if(dao.recuperarRegistroById(id)!=null) {
 		            dao.eliminaRegistro(id);
 		            return true;
 		        }
 		        return false;
 			
+		}
+		
+		@Override
+		public List<Pais> findRegistroById(int id) {
+
+			return dao.devolverRegistroById(id);
 		}
 
 }

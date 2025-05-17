@@ -9,39 +9,54 @@ import lombok.Data;
 @SuppressWarnings("all") // Nombres a utilizar en los objetos JSON a enviar al cliente
 @ApiModel(value = "Departamento", description = "Esta clase representa la informacion del Departamento")
 @Entity
-@Table(name = "Departamento")
+@Table(name = "departamentoestado")
 @Data
 public class Departamento {
 
 	@ApiModelProperty(value = "idDepartamento", required = true, dataType = "Integer", example = "00000000", position = 1)
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idDepartamento")
+    @Column(name = "iddepartamento")
 	Integer idDepartamento;
 	
 	
-	@ApiModelProperty(value = "descripcion", required = true, dataType = "String", example = "00000000", position = 2)
-	@Column(name = "descripcion")
-	String descripcion;
-	
-	
-	@ApiModelProperty(value = "idPais", required = true, dataType = "Integer", example = "00000000", position = 3)
+	@ApiModelProperty(value = "pais", required = true, dataType = "Integer", example = "00000000", position = 2)
 	@ManyToOne
-    @JoinColumn(name = "idPais")
-	Integer idPais;
+    @JoinColumn(name = "idpais")
+	Pais pais;
+	
+	
 
-	@ApiModelProperty(value = "Estado", required = true, dataType = "Boolean", example = "00000000", position = 4)
-    Boolean Estado;
+	@ApiModelProperty(value = "codoficial", required = true, dataType = "String", example = "00000000", position = 3)
+	@Column(name = "codoficial")
+	String codoficial;
+	
+	
+	@ApiModelProperty(value = "nombre", required = true, dataType = "String", example = "00000000", position = 4)
+	@Column(name = "nombre")
+	String nombre;
+	
+	@ApiModelProperty(value = "latitud", required = true, dataType = "Double", example = "00000000", position = 5)
+	@Column(name = "latitud")
+	Double latitud;
+	
+	@ApiModelProperty(value = "latitud", required = true, dataType = "Double", example = "00000000", position = 6)
+	@Column(name = "longitud")
+	Double longitud;
 
-	public Departamento(Integer idDepartamento, String descripcion, Integer idPais, Boolean estado) {
+	public Departamento(Integer idDepartamento, Pais pais, String codoficial, String nombre, Double latitud,
+			Double longitud) {
+		super();
 		this.idDepartamento = idDepartamento;
-		this.descripcion = descripcion;
-		this.idPais = idPais;
-		Estado = estado;
+		this.pais = pais;
+		this.codoficial = codoficial;
+		this.nombre = nombre;
+		this.latitud = latitud;
+		this.longitud = longitud;
 	}
 	
 	public Departamento() {
-
+		
 	}
 
 	public Integer getIdDepartamento() {
@@ -52,35 +67,52 @@ public class Departamento {
 		this.idDepartamento = idDepartamento;
 	}
 
-	public String getDescripcion() {
-		return descripcion;
+	public Pais getPais() {
+		return pais;
 	}
 
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
+	public void setPais(Pais pais) {
+		this.pais = pais;
 	}
 
-	public Integer getIdPais() {
-		return idPais;
+	public String getCodoficial() {
+		return codoficial;
 	}
 
-	public void setIdPais(Integer idPais) {
-		this.idPais = idPais;
+	public void setCodoficial(String codoficial) {
+		this.codoficial = codoficial;
 	}
 
-	public Boolean getEstado() {
-		return Estado;
+	public String getNombre() {
+		return nombre;
 	}
 
-	public void setEstado(Boolean estado) {
-		Estado = estado;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public Double getLatitud() {
+		return latitud;
+	}
+
+	public void setLatitud(Double latitud) {
+		this.latitud = latitud;
+	}
+
+	public Double getLongitud() {
+		return longitud;
+	}
+
+	public void setLongitud(Double longitud) {
+		this.longitud = longitud;
 	}
 
 	@Override
 	public String toString() {
-		return "Departamento [idDepartamento=" + idDepartamento + ", descripcion=" + descripcion + ", idPais=" + idPais
-				+ ", Estado=" + Estado + "]";
+		return "Departamento [idDepartamento=" + idDepartamento + ", pais=" + pais + ", codoficial=" + codoficial
+				+ ", nombre=" + nombre + ", latitud=" + latitud + ", longitud=" + longitud + "]";
 	}
+	
 	
 	
 	

@@ -2,7 +2,9 @@ package com.markers.infraestructure.services;
 
 import java.util.List;
 
+
 import com.markers.domain.models.Usuarios;
+import com.markers.domain.models.dtos.UsuariosDto;
 
 public interface UsuariosService {
 
@@ -10,9 +12,11 @@ public interface UsuariosService {
 
 	Usuarios recuperarRegistroById(int id);
 
-	boolean agregarRegistro(Usuarios datos);
+	boolean agregarRegistro(UsuariosDto datos);
 
-	void actualizarRegistro(Usuarios datos);
+	void actualizarRegistro(UsuariosDto datos);
 
-	boolean eliminaRegistro(int id);
+	boolean eliminarRegistro(int id);
+	
+	List<Usuarios> findRegistroById(int id);
 }

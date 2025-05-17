@@ -2,6 +2,7 @@ package com.markers.domain.dao;
 
 import java.util.List;
 
+
 import com.markers.domain.models.TipoSolicitud;
 
 public interface TipoSolicitudDao {
@@ -14,5 +15,7 @@ public interface TipoSolicitudDao {
 
 	void actualizarRegistro(TipoSolicitud datos);
 
-	void eliminaRegistro(int id);
+void eliminaRegistro(int id);
+	
+	List<TipoSolicitud> devolverRegistroById(int id);
 }

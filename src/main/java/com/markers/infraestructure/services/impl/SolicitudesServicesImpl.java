@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
 
+import com.markers.domain.dao.SolicitudesDao;
+import com.markers.domain.models.Roles;
 import com.markers.domain.models.Solicitudes;
 
 import com.markers.infraestructure.services.SolicitudesService;
@@ -15,7 +17,7 @@ public class SolicitudesServicesImpl implements SolicitudesService{
 
 
 	 @Autowired
-	 SolicitudesService dao;
+	 SolicitudesDao dao;
 	 
 	 @Override
 		public List<Solicitudes> devolverRegistro() {
@@ -48,13 +50,19 @@ public class SolicitudesServicesImpl implements SolicitudesService{
 		}
 
 		@Override
-		public boolean eliminaRegistro(int id) {
+		public boolean eliminarRegistro(int id) {
 			 if(dao.recuperarRegistroById(id)!=null) {
 		            dao.eliminaRegistro(id);
 		            return true;
 		        }
 		        return false;
 			
+		}
+		
+		@Override
+		public List<Solicitudes> findRegistroById(int id) {
+
+			return dao.devolverRegistroById(id);
 		}
 
 }

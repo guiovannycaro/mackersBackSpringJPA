@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
 
+import com.markers.domain.dao.RolesDao;
+
 import com.markers.domain.models.Roles;
 
 import com.markers.infraestructure.services.RolesService;
@@ -14,7 +16,7 @@ import com.markers.infraestructure.services.RolesService;
 public class RolesServicesImpl  implements RolesService{
 
 	 @Autowired
-	 RolesService dao;
+	 RolesDao dao;
 	 
 	 @Override
 		public List<Roles> devolverRegistro() {
@@ -47,12 +49,18 @@ public class RolesServicesImpl  implements RolesService{
 		}
 
 		@Override
-		public boolean eliminaRegistro(int id) {
+		public boolean eliminarRegistro(int id) {
 			 if(dao.recuperarRegistroById(id)!=null) {
 		            dao.eliminaRegistro(id);
 		            return true;
 		        }
 		        return false;
 			
+		}
+		
+		@Override
+		public List<Roles> findRegistroById(int id) {
+
+			return dao.devolverRegistroById(id);
 		}
 }

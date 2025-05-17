@@ -2,6 +2,7 @@ package com.markers.domain.dao;
 
 import java.util.List;
 
+
 import com.markers.domain.models.Usuarios;
 
 public interface UsuariosDao {
@@ -14,5 +15,7 @@ public interface UsuariosDao {
 
 	void actualizarRegistro(Usuarios datos);
 
-	void eliminaRegistro(int id);
+void eliminaRegistro(int id);
+	
+	List<Usuarios> devolverRegistroById(int id);
 }

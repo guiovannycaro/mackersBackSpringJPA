@@ -5,10 +5,12 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -17,7 +19,7 @@ import com.markers.domain.models.Roles;
 import com.markers.infraestructure.services.RolesService;
 
 @RestController
-@RequestMapping("markers/Roles")
+@RequestMapping("api/markers/AppAdmin/Roles")
 public class RolesController {
 
 	
@@ -59,6 +61,38 @@ public class RolesController {
 
 	            System.err.println("Se ha generado un error  :  " + er.getMessage());
 
+	        }
+	    }
+	    
+	    
+	    @DeleteMapping(value = "/eliminarRegistro", produces = MediaType.APPLICATION_JSON_VALUE)
+	    public void eliminarDatos(@RequestParam int datos) {
+	        try {
+
+
+	        	 System.out.println("viene del front " + datos);
+	             service.eliminarRegistro(datos);
+	        } catch (Exception er) {
+
+	            System.err.println("Se ha generado un error  :  " + er.getMessage());
+
+	        }
+	    }
+	    
+	    
+	  
+	    
+	    @GetMapping(value = "/obtenerRegistroById", produces = MediaType.APPLICATION_JSON_VALUE)
+	    public List<Roles> obtenerById(@RequestParam int datos) {
+	        try {
+
+
+	        	 System.out.println("viene del front " + datos);
+	        	 return   service.findRegistroById(datos);
+	        } catch (Exception er) {
+
+	            System.err.println("Se ha generado un error  :  " + er.getMessage());
+	            return Collections.emptyList();
 	        }
 	    }
 }

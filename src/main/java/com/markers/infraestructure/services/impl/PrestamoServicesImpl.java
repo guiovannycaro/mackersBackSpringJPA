@@ -6,16 +6,27 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
 
+import com.markers.domain.dao.PrestamoDao;
+import com.markers.domain.dao.prestamo.PrestamoRecDtos;
+import com.markers.domain.dao.solicitud.SolicitudesRecDtos;
+import com.markers.domain.dao.tipodocumento.TipoDocumentoRecDtos;
+import com.markers.domain.dao.usuarios.UsuariosRecDtos;
 import com.markers.domain.models.Prestamo;
-
-
+import com.markers.domain.models.Usuarios;
+import com.markers.domain.models.dtos.PrestamoDto;
 import com.markers.infraestructure.services.PrestamoService;
 
 @Service
 public class PrestamoServicesImpl  implements PrestamoService{
 
 	 @Autowired
-	 PrestamoService dao;
+	 PrestamoDao dao;
+	 
+	 @Autowired
+	 SolicitudesRecDtos solicitudesDao;
+	 
+	 @Autowired
+	 UsuariosRecDtos usuariosDao;
 	 
 	 @Override
 		public List<Prestamo> devolverRegistro() {
@@ -29,12 +40,21 @@ public class PrestamoServicesImpl  implements PrestamoService{
 		}
 
 		@Override
-		public boolean agregarRegistro(Prestamo datos) {
-			 if(dao.recuperarRegistroById(datos.getIdPrestamo())==null) {
-		            dao.agregarRegistro(datos);
+		public boolean agregarRegistro(PrestamoDto datos) {
+			
+				 
+				 Prestamo pres = new Prestamo(); 
+				 
+				 pres.setIdPrestamo(datos.getIdPrestamo());
+				 pres.setIdsolicitud(solicitudesDao.recuperarSolicitudes(datos.getIdSolicitud()));
+				 pres.setUsuarioId(usuariosDao.recuperarUsuarios(datos.getUsuarioId()));
+				 pres.setMonto(datos.getMonto());
+				 pres.setPlazoEnMeses(datos.getPlazoEnMeses());
+				 pres.setEstadoPrestamo(datos.getEstado());
+				    
+		            dao.agregarRegistro(pres);
 		            return true;
-		        }
-		        return false;
+		        
 			
 		}
 
@@ -55,5 +75,11 @@ public class PrestamoServicesImpl  implements PrestamoService{
 		        }
 		        return false;
 			
+		}
+		
+		@Override
+		public List<Prestamo> findRegistroById(int id) {
+
+			return dao.devolverRegistroById(id);
 		}
 }

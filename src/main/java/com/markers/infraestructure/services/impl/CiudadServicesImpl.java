@@ -6,8 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.markers.domain.dao.CiudadDao;
+import com.markers.domain.dao.ciudad.CiudadRecDtos;
 import com.markers.domain.models.Ciudad;
-
+import com.markers.domain.models.dtos.CiudadDto;
 import com.markers.infraestructure.services.CiudadService;
 
 
@@ -18,12 +19,26 @@ public class CiudadServicesImpl  implements CiudadService{
 	 @Autowired
 	 CiudadDao dao;
 	 
+	 
+	 @Autowired
+     CiudadRecDtos ciudadDao;
+	 
 	@Override
 	public List<Ciudad> devolverRegistro() {
 
 		return dao.devolverRegistro();
 	}
 
+	
+	@Override
+	public List<Ciudad> devolverListaRegistro() {
+
+		return ciudadDao.devolverRegistro();
+	}
+	
+	
+	
+	
 	@Override
 	public Ciudad recuperarRegistroById(int id) {
 		 return dao.recuperarRegistroById(id);
@@ -49,13 +64,21 @@ public class CiudadServicesImpl  implements CiudadService{
 	}
 
 	@Override
-	public boolean eliminaRegistro(int id) {
+	public boolean eliminarRegistro(int id) {
 		 if(dao.recuperarRegistroById(id)!=null) {
 	            dao.eliminaRegistro(id);
 	            return true;
 	        }
 	        return false;
 		
+	}
+	
+
+	
+	@Override
+	public List<Ciudad> findRegistroById(int id) {
+
+		return dao.devolverRegistroById(id);
 	}
 
 }
